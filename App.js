@@ -3,40 +3,22 @@ import {
   StyleSheet, 
   Text,
   View ,
-  TouchableOpacity ,
-  ActivityIndicator,
-  TextInput
 } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import {TabsBottom} from './src/navigation/index';
 
 export default function App() {
 
-  const[email,setEmail] = useState(null);
-  const[password,setPassword] = useState(null);
-  const[mobile,setMobile] = useState(null);
-  const[firstName,setFirstName] = useState(null);
-  const[lastName,setLastName] = useState(null);
+  const[email,setEmail] = useState("");
+  const[password,setPassword] = useState("");
+  const[mobile,setMobile] = useState("");
+  const[firstName,setFirstName] = useState("");
+  const[lastName,setLastName] = useState("");
  
   return (
-    <View style={styles.container}>
-
-      <View style={styles.signUp}> 
-
-
-
-      <TextInput
-        style={styles.input}
-        onChangeText={(text)=>setEmail(text)}
-        value={email}
-        placeholder="useless placeholder"
-        keyboardType="numeric"
-      />
- 
-
-
-
-      </View>
-
-    </View>
+    <NavigationContainer>
+      <TabsBottom/>
+  </NavigationContainer>
   );
 }
 
