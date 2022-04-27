@@ -49,7 +49,14 @@ export const StoresStack = ()=>{
 }
 export const TabsBottom = ()=>{
     return(
-        <TabsBottomNavigation.Navigator>
+        <TabsBottomNavigation.Navigator
+        initialRouteName="Dashboard"
+        screenOptions={{
+          tabBarColor:'#A57548',
+            
+
+        }}
+        >
         <TabsBottomNavigation.Screen 
         name="Dashboard" 
         component={DashboardStack}
@@ -66,7 +73,7 @@ export const TabsBottom = ()=>{
         options={{
             tabBarLabel: 'cart',
             tabBarIcon: ({ color}) => (
-              <Ionicons name="cart" color={color} size={20} />
+              <Ionicons name= "cart"  color={color} size={20} />
             ),
           }}
         />
