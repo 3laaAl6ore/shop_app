@@ -1,10 +1,42 @@
-import React from 'react';
-import { View , Text , ActivityIndicator } from 'react-native';
+import React, { useEffect, useState, useCallback } from "react";
+import { View, Text, FlatList, ActivityIndicator } from "react-native";
+import { useDispatch, useSelector } from "react-redux";
+import * as storeActions from "../../../store/actions/index";
+import Colors from "../../utility/AppColors";
 
 const DashboardScreen = props =>{
+
+    const dispatch = useDispatch();
+    const [isLoading, setIsLoading] = useState(false);
+  
+    const getAllStores = useCallback(async () => {
+      let action = storeActions.get_store_action();
+      setIsLoading(true);
+      try {
+        await dispatch(action);
+        setIsLoading(false);
+      } catch (err) {
+        setIsLoading(false);
+      }
+    }, [setIsLoading, dispatch, storeActions.get_store_action]);
+  
+    useEffect(() => {
+      getAllStores();
+    }, [getAllStores]);
+  
+    const allStores = useSelector((state) => state.allStores);
+    console.log(allStores);
+  
     return (
         <View>
-            <Text> dashboard </Text>
+        {
+             allStores?.allStores?.stores?.length > 0 ? (
+                <Text>data</Text>
+             ):( 
+                <Text>no data</Text>
+
+             )
+        }
         </View>
     )
 }

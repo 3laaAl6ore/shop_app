@@ -5,10 +5,11 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
-import DashboardScreen from '../screens/dashboard';
-import CartScreen from '../screens/cart';
-import MenuScreen from '../screens/menu';
-import StoresScreen from '../screens/stores';
+import DashboardScreen from '../screens/dashboard/index';
+import CartScreen from '../screens/cart/index';
+import MenuScreen from '../screens/menu/index';
+import StoresScreen from '../screens/stores/index';
+import StoreDetailsScreen from '../screens/stores/StoreDetails';
 
 const DashboardStackNavigation = createStackNavigator();
 const CartStackNavigation = createStackNavigator();
@@ -44,6 +45,7 @@ export const StoresStack = ()=>{
     return (
         <StoresStackNavigation.Navigator>
             <StoresStackNavigation.Screen name = "Stores" component={StoresScreen}/>
+            <StoresStackNavigation.Screen name = "StoreDetails" component={StoreDetailsScreen}/>
         </StoresStackNavigation.Navigator>
     )
 }
@@ -53,12 +55,10 @@ export const TabsBottom = ()=>{
         initialRouteName="Dashboard"
         screenOptions={{
           tabBarColor:'#A57548',
-            
-
         }}
         >
         <TabsBottomNavigation.Screen 
-        name="Dashboard" 
+        name="dashboard" 
         component={DashboardStack}
         options={{
             tabBarLabel: 'Home',
@@ -68,7 +68,7 @@ export const TabsBottom = ()=>{
           }}
         />
         <TabsBottomNavigation.Screen 
-        name="Cart"
+        name="cart"
         component={CartStack}
         options={{
             tabBarLabel: 'cart',
@@ -77,18 +77,8 @@ export const TabsBottom = ()=>{
             ),
           }}
         />
-        <TabsBottomNavigation.Screen 
-        name="Menu" 
-        component={MenuStack}
-        options={{
-            tabBarLabel: 'Menu',
-            tabBarIcon: ({ color}) => (
-              <MaterialIcons name="menu" color={color} size={20} />
-            ),
-          }}
-        />
         <TabsBottomNavigation.Screen
-         name="Stores"
+         name="stores"
          component={StoresStack}
          options={{
             tabBarLabel: 'Stores',
@@ -97,6 +87,16 @@ export const TabsBottom = ()=>{
             ),
           }}
           />
+         <TabsBottomNavigation.Screen 
+        name="menu" 
+        component={MenuStack}
+        options={{
+            tabBarLabel: 'Menu',
+            tabBarIcon: ({ color}) => (
+              <MaterialIcons name="menu" color={color} size={20} />
+            ),
+          }}
+        />
       </TabsBottomNavigation.Navigator>
     )
 }
