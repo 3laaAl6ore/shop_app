@@ -8,5 +8,15 @@ const CartScreen = props =>{
         </View>
     )
 }
-
+export const ScreenOptions = (Navdata) => {
+    return {
+   //   headerTitle: Navdata.route.params.data.storeName,
+      headerStyle: { backgroundColor: "#DFA11111" },
+      headerTitleStyle: {
+        color: "#000000",
+      },
+      headerTitleAlign: "center",
+      headerLeftStyletitle: "center",
+    };
+  };
 export default CartScreen;

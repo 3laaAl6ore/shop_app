@@ -22,10 +22,20 @@ const StoresScreen = (props) => {
           )}
         />
       ) : (
-        <Text>222</Text>
+        <Text>there is not any store yes  </Text>
       )}
     </View>
   );
 };
-
+export const ScreenOptions = (Navdata) => {
+   return {
+  //   headerTitle: Navdata.route.params.data.storeName,
+     headerStyle: { backgroundColor: "#DFA11111" },
+     headerTitleStyle: {
+       color: "#000000",
+     },
+     headerTitleAlign: "center",
+     headerLeftStyletitle: "center",
+   };
+ };
 export default StoresScreen;

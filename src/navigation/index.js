@@ -5,11 +5,11 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
-import DashboardScreen from '../screens/dashboard/index';
-import CartScreen from '../screens/cart/index';
-import MenuScreen from '../screens/menu/index';
-import StoresScreen from '../screens/stores/index';
-import StoreDetailsScreen from '../screens/stores/StoreDetails';
+import DashboardScreen ,{ScreenOptions as DashboardScreenOptions}from '../screens/dashboard/index';
+import CartScreen ,{ScreenOptions as CartScreenOptions}from '../screens/cart/index';
+import MenuScreen ,{ScreenOptions as MenuScreenOptions}from '../screens/menu/index';
+import StoresScreen ,{ScreenOptions as StoreScreenOptions}from '../screens/stores/index';
+import StoreDetailsScreen,{ScreenOptions as StoreDetailsScreenOptions} from '../screens/stores/StoreDetails';
 
 const DashboardStackNavigation = createStackNavigator();
 const CartStackNavigation = createStackNavigator();
@@ -23,6 +23,7 @@ export const DashboardStack = ()=>{
             <DashboardStackNavigation.Screen
              name = "Dashboard"
              component={DashboardScreen}
+             options={DashboardScreenOptions}
              />
         </DashboardStackNavigation.Navigator>
     )
@@ -30,22 +31,22 @@ export const DashboardStack = ()=>{
 export const CartStack = ()=>{
     return (
         <CartStackNavigation.Navigator>
-            <CartStackNavigation.Screen name = "Cart" component={CartScreen}/>
+            <CartStackNavigation.Screen name = "Cart" component={CartScreen} options={CartScreenOptions}/>
         </CartStackNavigation.Navigator>
     )
 }
 export const MenuStack = ()=>{
     return (
         <MenuStackNavigation.Navigator>
-            <MenuStackNavigation.Screen name = "Menu" component={MenuScreen}/>
+            <MenuStackNavigation.Screen name = "Menu" component={MenuScreen} options={MenuScreenOptions}/>
         </MenuStackNavigation.Navigator>
     )
 }
 export const StoresStack = ()=>{
     return (
         <StoresStackNavigation.Navigator>
-            <StoresStackNavigation.Screen name = "Stores" component={StoresScreen}/>
-            <StoresStackNavigation.Screen name = "StoreDetails" component={StoreDetailsScreen}/>
+            <StoresStackNavigation.Screen name = "Stores" component={StoresScreen} options={StoreScreenOptions}/>
+            <StoresStackNavigation.Screen name = "StoreDetails" component={StoreDetailsScreen} options={StoreDetailsScreenOptions}/>
         </StoresStackNavigation.Navigator>
     )
 }
