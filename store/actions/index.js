@@ -1,5 +1,5 @@
 export const GET_STORES = 'GET_STORES';
-const baseURL = 'http://10.0.0.5:5090/api/';
+const baseURL = 'http://10.0.0.23:5090/api/';
 
 export const get_store_dispatch = (data)=>{
     return dispatch =>{

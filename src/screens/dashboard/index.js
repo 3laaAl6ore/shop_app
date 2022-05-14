@@ -30,10 +30,10 @@ const DashboardScreen = props =>{
     return (
         <View>
         {
-             allStores?.allStores?.stores?.length > 0 ? (
-                <Text>data</Text>
+            isLoading > 0 ? (
+              <ActivityIndicator size="large" color={Colors.happy_green} />
              ):( 
-                <Text>no data</Text>
+                <Text> data</Text>
 
              )
         }

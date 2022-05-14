@@ -6,27 +6,203 @@ import {
   ActivityIndicator,
   StyleSheet,
   Image,
+  SafeAreaView,
+  Modal,
+  TouchableOpacity,
 } from "react-native";
+import Colors from "../../utility/AppColors.js";
+import { Icon } from "@rneui/themed";
 
 const StoreDetails = (props) => {
   console.log("in screen detalis:");
 
-  console.log(props);
+  // console.log(props);
 
   const picURI = props.route.params.data.logo;
   const storeName = props.route.params.data.storeName;
   const isDelivery = props.route.params.data.isDelivery;
   const isTakeaway = props.route.params.data.isTakeaway;
+  const Discription = props.route.params.data.storeDescription;
+  const workingHours = props.route.params.data.workingHours;
 
-  return (
-    <View style={{ padding: 20 }}>
-       <View style={{flexDirection:'row'}}>
-
-      <Image style={styles.logo} source={{uri: picURI }}/>
-      <Text style={{justifyContent:'flex-end'}}> {storeName} </Text>
-      </View>
+  const [isVisible, setIsVisible] = useState(false);
  
-    </View>
+
+
+
+  const dayName = [    "non",
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",]
+  return (
+    <SafeAreaView style={{ flex: 1 }}>
+      <View
+        style={{
+          flexDirection: "row",
+          backgroundColor: "##F4EDEA",
+        }}
+      >
+        <View
+          style={{
+            justifyContent: "center",
+            width: "30%",
+          }}
+        >
+          <Image
+            style={styles.logo}
+            resizeMode="cover"
+            source={{ uri: picURI }}
+          />
+        </View>
+        <View
+          style={{
+            width: "50%",
+            justifyContent: "center",
+          }}
+        >
+          <Text
+            style={{
+              fontWeight: "bold",
+              fontSize: 25,
+              alignItems: "flex-end",
+            }}
+          >
+            {" "}
+            {storeName}{" "}
+          </Text>
+        </View>
+        <View
+          style={{
+            width: "50%",
+            justifyContent: "center",
+          }}
+        >
+          <Icon
+            raised
+            name="heartbeat"
+            type="font-awesome"
+            color="#f50"
+            onPress={() => setIsVisible(!isVisible)}
+          />
+        </View>
+        <View style={{ width: "100%", padding: 15 }}>
+          <Modal
+            animationType="fade"
+            visible={isVisible}
+            transparent={true}
+            style={{ width: " 100%" }}
+            onRequestClose={() => {
+              setIsVisible(!isVisible);
+            }}
+          >
+            <View
+              style={{
+                backgroundColor: Colors.gray_text,
+                flex: 1,
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <View
+                style={{
+                  width: "70%",
+                  padding: 30,
+                  margin: 30,
+                  borderRadius: 10,
+                  shadowColor: Colors.black,
+                  shadowOffset: { width: 0, height: 2 },
+                  shadowOpacity: 0.25,
+                  shadowRadius: 20,
+                  alignItems: "center",
+                  backgroundColor: Colors.white,
+                }}
+              >
+                <Image
+                  source={{
+                    uri: picURI,
+                  }}
+                  style={{ width: 100, height: 150, resizeMode: "contain" }}
+                />
+                <Text
+                  style={{
+                    fontSize: 15,
+                    fontWeight: "bold",
+                    color: Colors.light_green,
+                  }}
+                >
+                  {"more about my store :)"}
+                </Text>
+                <Text>{Discription}</Text>
+                <Text> Working Time </Text>
+                {workingHours.map(({_id, day, isOpen ,fromHour,  toHour}) => (
+                  <View
+                    key={_id}
+                    style={{
+                      width: "100%",
+                      padding: 5,
+                      borderRadius: 12,
+                      marginTop: 6,
+                      backgroundColor:Colors.blue_back,
+                      
+                    }}
+                  >
+                    {
+                      isOpen ? (
+                       <Text style={{ fontSize:12 , fontWeight:"bold", color:Colors.happy_green}}>{dayName[day]} From {fromHour} To {toHour}</Text>
+                        
+                      ):(
+                        <Text style={{ fontSize:12 , fontWeight:"bold", color:Colors.red}}>{dayName[day]} Closed</Text>
+
+                      )
+
+                    }
+         
+                  
+                  </View>
+                ))}
+                <Text
+                  style={{
+                    fontSize: 15,
+                    fontWeight: "bold",
+                    color: Colors.happy_green,
+                  }}
+                >
+                  {storeName}
+                </Text>
+
+                <TouchableOpacity
+                  onPress={() => {
+                    setIsVisible(!isVisible);
+                  }}
+                  style={{
+                    backgroundColor: Colors.happy_green,
+                    alignItems: "center",
+                    width: "100%",
+                    paddingVertical: 20,
+                    borderRadius: 10,
+                    marginTop: 12,
+                  }}
+                >
+                  <Text
+                    style={{
+                      color: Colors.white,
+
+                      fontSize: 17,
+                    }}
+                  >
+                    GOT IT!
+                  </Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+          </Modal>
+        </View>
+      </View>
+    </SafeAreaView>
   );
 };
 export const ScreenOptions = (Navdata) => {
