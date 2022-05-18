@@ -10,9 +10,11 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import ReduxThunk from 'redux-thunk';
 
-import reducers from './store/reducers/index';
+import allStores from './store/reducers/GetStoresReducer';
+import all_categories from './store/reducers/GetCategoriesReducer';
 const rootReducer = combineReducers({
-  allStores : reducers
+   allStores : allStores,
+  all_categories:all_categories
 });
 const store = createStore(rootReducer , applyMiddleware(ReduxThunk));
 

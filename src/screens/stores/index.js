@@ -4,8 +4,14 @@ import { useDispatch, useSelector } from "react-redux";
 import StoreItem from "../../components/StoreItem";
 import Colors from "../../utility/AppColors";
 const StoresScreen = (props) => {
+
+
+
+
+  //------------------------------------------------------//
   const allStores = useSelector((state) => state.allStores);
   console.log(allStores);
+  
   return (
     <View>
       {

@@ -12,11 +12,42 @@ import {
 } from "react-native";
 import Colors from "../../utility/AppColors.js";
 import { Icon } from "@rneui/themed";
+import { useDispatch, useSelector } from "react-redux";
+import * as categoriesActions from "../../../store/actions/GetCategoriesAction";
+export const store_id = (props)=>{
+ return props.route.params.data._id;
+};
 
-const StoreDetails = (props) => {
+const  StoreDetails = (props) => {
   console.log("in screen detalis:");
 
-  // console.log(props);
+   console.log(props);
+   
+   const dispatch = useDispatch();
+   const [isLoading, setIsLoading] = useState(false);
+ 
+   const getAllCategories = useCallback(async () => {
+     let action = categoriesActions.get_categories_action;
+     setIsLoading(true);
+     try {
+       await dispatch(action);
+       setIsLoading(false);
+     } catch (err) {
+       setIsLoading(false);
+     }
+   }, [setIsLoading, dispatch, categoriesActions.get_categories_action]);
+ 
+   useEffect(() => {
+    getAllCategories();
+
+   }, [getAllCategories]);
+
+   const all_categories = useSelector((state) => state.all_categories);
+   console.log("----->");
+   console.log(all_categories);
+   console.log(all_categories.all_categories.length);
+  
+
 
   const picURI = props.route.params.data.logo;
   const storeName = props.route.params.data.storeName;
@@ -38,7 +69,20 @@ const StoreDetails = (props) => {
     "Thursday",
     "Friday",
     "Saturday",]
-  return (
+    return(
+      <View>
+      {
+          all_categories?.all_categories?.length == 0 ?(
+            <ActivityIndicator size="large" color={Colors.happy_green} />
+           ):( 
+              <Text> data</Text>
+
+           )
+      }
+      </View>
+    );
+  /*
+    return (
     <SafeAreaView style={{ flex: 1 }}>
       <View
         style={{
@@ -204,7 +248,10 @@ const StoreDetails = (props) => {
       </View>
     </SafeAreaView>
   );
+  */
 };
+
+
 export const ScreenOptions = (Navdata) => {
   return {
     headerShown: false,

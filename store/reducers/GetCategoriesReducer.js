@@ -1,20 +1,19 @@
-import {GET_STORES} from '../actions/index';
+import {GET_CATEGORIES} from '../actions/GetCategoriesAction';
 
 const initialState = {
-    allStores :[]
+    all_categories :[]
 }
 
 export default (state = initialState , action)=>{
 
     switch (action.type) {
-        case GET_STORES:
+        case GET_CATEGORIES:
           return{
              ...state, // sprid operiation
-             allStores : action.data             
+             all_categories : action.data             
           }
         default:
             return state
     }
 
 };
-

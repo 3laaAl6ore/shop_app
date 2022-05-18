@@ -16,6 +16,7 @@ export const get_store_action = () =>{
        if(data.status)
        {
         dispatch(get_store_dispatch(data));
+       
        }else{
             let message = data.message;
             throw new Error(message); 

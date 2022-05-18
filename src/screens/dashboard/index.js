@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { View, Text, FlatList, ActivityIndicator } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
-import * as storeActions from "../../../store/actions/index";
+import * as storeActions from "../../../store/actions/GetStoresAction";
 import Colors from "../../utility/AppColors";
 
 const DashboardScreen = props =>{
@@ -30,7 +30,7 @@ const DashboardScreen = props =>{
     return (
         <View>
         {
-            isLoading > 0 ? (
+            isLoading ? (
               <ActivityIndicator size="large" color={Colors.happy_green} />
              ):( 
                 <Text> data</Text>
