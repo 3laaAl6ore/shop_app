@@ -9,5 +9,10 @@ export default {
     yellow: '#FFC106',
     blue_back: '#E2F4FE',
     gray_text: '#455A64',
-    light_green: '#a6d1d2'
+    light_green: '#a6d1d2',
+    ligth_gray : '#E4FDE1',
+    bold_red:'#9F3551',
+    sky_blue :'#88CCF1',
+    bold_white :'#C1DFF0',
+    bne:'#28190E'
 }

@@ -10,21 +10,34 @@ import {
 } from "react-native";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import Entypo from "react-native-vector-icons/Entypo";
-import AppColors from "../utility/AppColors";
+import AppColors from "../../utility/AppColors";
+import { styles } from "../../utility/store_style";
 
 //delivery-dining  shopping-bag
 
 const StoreItem = (props) => {
   return (
-    <TouchableOpacity onPress={props.onClick} style={Styles.row}>
-      <View style={{ padding: 5 }}>
-        <Image source={{ uri: props.store.logo }} style={Styles.logo} />
+    <TouchableOpacity onPress={props.onClick} style={styles.row}>
+      <View style={{ padding:0}}>
+        <Image source={{ uri: props.store.logo }} style={styles.logo} />
       </View>
-      <View style={{ padding: 10, width: "60%" }}>
-        <Text style={{ fontSize: 20, fontWeight: "600" }}>
-          {props.store.storeName}
-        </Text>
-        <Text style={{ fontSize: 14, fontWeight: "300" }}>
+      <View
+        style={{
+          padding: 5,
+          width: "60%",
+          borderBottomColor: AppColors.happy_green,
+          borderBottomWidth: 1.2,
+        }}
+      >
+        <Text style={styles.storeName}>{props.store.storeName}</Text>
+        <Text
+          style={{
+            fontSize: 15,
+            fontWeight: "200",
+            color: AppColors.bne,
+            marginLeft: 11,
+          }}
+        >
           {props.store.contactInfo.address} | {props.store.contactInfo.city}
         </Text>
       </View>
@@ -51,20 +64,5 @@ const StoreItem = (props) => {
     </TouchableOpacity>
   );
 };
-
-const Styles = StyleSheet.create({
-  logo: {
-    width: 60,
-    height: 60,
-  },
-  row: {
-    marginBottom: 12,
-    width: "100%",
-    paddingVertical: 15,
-    flexDirection: "row",
-    borderRadius: 12,
-    backgroundColor: "#ffffff",
-  },
-});
 
 export default StoreItem;

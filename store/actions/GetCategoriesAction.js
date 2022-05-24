@@ -1,6 +1,6 @@
 export const GET_CATEGORIES = 'GET_CATEGORIES';
 //import store_id from "../../src/screens/stores/StoreDetails.js";
-const baseURL = 'http://10.0.0.23:5090/api/';
+const baseURL = 'http://192.168.0.101:5090/api/';
 console.log("get i ininiin");
 export const get_category_dispatch = (data)=>{
     return dispatch =>{
@@ -8,9 +8,9 @@ export const get_category_dispatch = (data)=>{
     };
 };
 
-export const get_categories_action = () =>{
+export const get_categories_action = (store_id) =>{
     return async dispatch=>{
-        const response = await fetch(baseURL+'catagory/getAllCategories/627f9784925fbd410f17c4d4',
+        const response = await fetch(baseURL+'catagory/getAllCategories/'+store_id,
 
        );
        const data = await response.json();
@@ -21,7 +21,7 @@ export const get_categories_action = () =>{
        }else{
             let message = data.message;
               console.log("SSS");
-            throw new Error(message); 
+            throw new Error(message); // 1 .2 .6 .8 .10
           
        }
     }

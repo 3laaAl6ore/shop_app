@@ -25,7 +25,7 @@ const DashboardScreen = props =>{
     }, [getAllStores]);
   
     const allStores = useSelector((state) => state.allStores);
-    console.log(allStores);
+   // console.log(allStores);
   
     return (
         <View>
